@@ -6,13 +6,13 @@ queue_agricultores(queue_agricultores){}
 Agricultores::~Agricultores(){}
 
 void Agricultores::run(){
-    int num = 0;
-    while (num != -1){
-        num = queue_agricultores.pop();
-        if (num == -1){
+    char material = ' ';
+    while (material != '1'){
+        material = queue_agricultores.pop();
+        if (material == '1'){
             std::cout << "No hay mas elementos por consumir " << '\n';
             break;
         }
-        std::cout << "consuming " << num << '\n';
+        std::cout << "consuming " << material << '\n';
     }
 }

@@ -2,9 +2,9 @@
 
 BlockingQueue::BlockingQueue() : isClosed(false){}
 
-void BlockingQueue::push(int num){
+void BlockingQueue::push(char material){
     std::unique_lock<std::mutex> lk(this->m);
-    queue.push(num);
+    queue.push(material);
     cv.notify_all();
 }
 
@@ -15,11 +15,11 @@ se le agregue un elemento a la cola.
 2- la cola esta vacía y cerrada, es decir, no se van a recibir mas elementos 
 en la cola. 
 */
-int BlockingQueue::pop(){
+char BlockingQueue::pop(){
     std::unique_lock<std::mutex> lk(this->m);
     while(queue.empty()){
         if(isClosed){
-            return -1;
+            return '1';
         }
         cv.wait(lk); // función bloqueante, evito Busy Wait
     }

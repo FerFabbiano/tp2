@@ -9,12 +9,12 @@ class BlockingQueue {
 private:
     bool isClosed;
     std::mutex m;
-    std::queue<int> queue;
+    std::queue<char> queue;
     std::condition_variable cv;
 public: 
     BlockingQueue();
-    void push(int num);
-    int pop();
+    void push(char material);
+    char pop();
     void close();
     ~BlockingQueue();
 };

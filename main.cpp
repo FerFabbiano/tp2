@@ -12,26 +12,33 @@ int main(){
 
     BlockingQueue cola;
 
+    std::vector<Agricultores*> agricultores;
+
     std::thread producer([&]() {
         for (int i = 0; i < 5; ++i) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            std::cout << "producing " << i << '\n';
-            cola.push(i);
+            std::cout << "producing " << 'T' << '\n';
+            cola.push('T');
         }
         cola.close();
-    }); 
+    });
 
-    Agricultores agricultor1(cola);
+    for (int i = 0; i < 3; i++){
+        agricultores.push_back(new Agricultores(cola));
+    }
 
-    agricultor1.start();
+    for (int i = 0; i < 3; i++){
+        agricultores[i]->start();    
+    }
 
     producer.join();
-    agricultor1.join();
+    for (int i = 0; i < 3; i++){
+        agricultores[i]->join();    
+        delete(agricultores[i]);
+    }
 
     return 0;
 }
-
-
 
 /*
 int main(){
