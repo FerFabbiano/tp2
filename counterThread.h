@@ -1,8 +1,8 @@
 #ifndef COUNTER_THREAD_H
 #define COUNTER_THREAD_H
 
-#include "Thread.h"
-#include "ResultProtected.h"
+#include "thread.h"
+#include "resultProtected.h"
 
 class CharCounter : public Thread {
 public:

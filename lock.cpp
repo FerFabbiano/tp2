@@ -1,4 +1,4 @@
-#include "Lock.h"
+#include "lock.h"
 
 Lock::Lock(std::mutex &m) : m(m) {
     m.lock();

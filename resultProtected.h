@@ -5,7 +5,7 @@
 #include <vector>
 #include <thread>
 #include <mutex>
-#include "Lock.h"
+#include "lock.h"
 
 class ResultProtected {
 private:

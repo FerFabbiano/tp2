@@ -1,4 +1,4 @@
-#include "CounterThread.h"
+#include "counterThread.h"
 
 void CharCounter::run() {
 	int result_temp = 0;
@@ -16,15 +16,3 @@ void CharCounter::run() {
 
 CharCounter::CharCounter(const char* filename, char countChar, ResultProtected &result) :
 	filename(filename), countChar(countChar), result(result){}
-
-/*
-void CharCounter::printResult() const {
-	printf("%s tiene %d letras '%c'\n", this->filename.c_str(), this->result, this->countChar);
-}
-*/
-
-/*
-int CharCounter::getResult() const {
-	return this->result;
-}
-*/

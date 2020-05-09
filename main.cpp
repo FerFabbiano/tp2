@@ -1,4 +1,6 @@
 #include "blocking_queue.h"
+#include "agricultores.h"
+
 #include <condition_variable>
 #include <mutex>
 #include <thread>
@@ -6,6 +8,32 @@
 #include <queue>
 #include <chrono>
  
+int main(){
+
+    BlockingQueue cola;
+
+    std::thread producer([&]() {
+        for (int i = 0; i < 5; ++i) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::cout << "producing " << i << '\n';
+            cola.push(i);
+        }
+        cola.close();
+    }); 
+
+    Agricultores agricultor1(cola);
+
+    agricultor1.start();
+
+    producer.join();
+    agricultor1.join();
+
+    return 0;
+}
+
+
+
+/*
 int main(){
 
     BlockingQueue cola;
@@ -36,6 +64,7 @@ int main(){
 
     return 0;
 }
+*/
 
 /*
 #include <iostream>

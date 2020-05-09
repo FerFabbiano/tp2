@@ -1,4 +1,4 @@
-#include "ResultProtected.h"
+#include "resultProtected.h"
 
 ResultProtected::ResultProtected(unsigned int v) : result(v) {}
     
