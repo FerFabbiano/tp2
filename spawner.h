@@ -1,3 +1,6 @@
+#ifndef SPAWNER_H
+#define SPAWNER_H
+
 #include <iostream>
 #include <cstring>
 #include <queue>
@@ -28,3 +31,5 @@ private:
     BlockingQueue &cola_m;
     std::vector<Thread*> &threads;
 };
+
+#endif

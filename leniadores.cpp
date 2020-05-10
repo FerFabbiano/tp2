@@ -10,9 +10,7 @@ void Leniadores::run(){
     while (material != '1'){
         material = queue_leniadores.pop();
         if (material == '1'){
-            std::cout << "No hay mas elementos por consumir " << '\n';
             break;
         }
-        std::cout << "consuming " << material << '\n';
     }
 }

@@ -9,6 +9,9 @@ Spawner::~Spawner(){}
 
 void Spawner::read_file(){
     FILE* fp = fopen(this->filename.c_str(), "r+b");
+    if (fp == NULL){
+        // Lanzar excepción?
+    }
     char trabajador[14], cantidad;
     memset(trabajador, 0, sizeof(trabajador));
     int n = 0;
@@ -42,10 +45,10 @@ void Spawner::create(char *trabajador, char *cantidad){
             this->threads.push_back(new Leniadores(cola_l));
         }
     }else if(strcmp(trabajador, "Cocineros") == 0){
-        std::cout << trabajador << std::endl;
+        //std::cout << trabajador << std::endl;
     }else if(strcmp(trabajador, "Carpinteros") == 0){
-        std::cout << trabajador << std::endl;
+        //std::cout << trabajador << std::endl;
     }else if(strcmp(trabajador, "Armeros") == 0){
-        std::cout << trabajador << std::endl;
+        //std::cout << trabajador << std::endl;
     }
 }
