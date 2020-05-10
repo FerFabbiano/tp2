@@ -11,34 +11,30 @@
  
 int main(int argc, const char* argv[]){
 
-    BlockingQueue cola;
-    std::vector<Agricultores*> agricultores;
-    Spawner spawner(argv[1], cola, agricultores);
+    BlockingQueue cola_a, cola_m, cola_l;
+    std::vector<Thread*> threads;
+    Spawner spawner(argv[1], cola_a, threads);
     spawner.read_file();
-    std::cout << "size: " << agricultores.size() << '\n';
+    int cant_threads = threads.size();
 
-
-/*
     std::thread producer([&]() {
         for (int i = 0; i < 5; ++i) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             std::cout << "producing " << 'T' << '\n';
-            cola.push('T');
+            cola_a.push('T');
         }
-        cola.close();
+        cola_a.close();
     });
 
-    for (int i = 0; i < 2; i++){
-        agricultores[i]->start();    
+    for (int i = 0; i < cant_threads; i++){
+        threads[i]->start();    
     }
 
     producer.join();
-    for (int i = 0; i < 2; i++){
-        agricultores[i]->join();    
-        delete(agricultores[i]);
+    for (int i = 0; i < cant_threads; i++){
+        threads[i]->join();    
+        delete(threads[i]);
     }
-    */
-
 
 /*
     BlockingQueue cola;

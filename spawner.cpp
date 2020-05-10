@@ -1,8 +1,8 @@
 #include "spawner.h"
 
 Spawner::Spawner(const char* filename, BlockingQueue &cola, 
-std::vector<Agricultores*> &agricultores) : filename(filename), cola(cola),
-agricultores(agricultores) {}
+std::vector<Thread*> &threads) : filename(filename), cola(cola),
+threads(threads) {}
 
 Spawner::~Spawner(){}
 
@@ -27,14 +27,19 @@ void Spawner::read_file(){
 }
 
 void Spawner::create(char *trabajador, char *cantidad){
+    int cant = strtol(cantidad, NULL, 10);
     if (strcmp(trabajador, "Agricultores") == 0){
-        for (int i = 0; i < 2; i++){
-            this->agricultores.push_back(new Agricultores(cola));
+        for (int i = 0; i < cant; i++){
+            this->threads.push_back(new Agricultores(cola));
         }
     }else if(strcmp(trabajador, "Mineros") == 0){
-        std::cout << trabajador << std::endl;
+        for (int i = 0; i < cant; i++){
+            this->threads.push_back(new Agricultores(cola));
+        }
     }else if(strcmp(trabajador, "Leniadores") == 0){
-        std::cout << trabajador << std::endl;
+        for (int i = 0; i < cant; i++){
+            this->threads.push_back(new Agricultores(cola));
+        }
     }else if(strcmp(trabajador, "Cocineros") == 0){
         std::cout << trabajador << std::endl;
     }else if(strcmp(trabajador, "Carpinteros") == 0){
