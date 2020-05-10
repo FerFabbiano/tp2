@@ -1,5 +1,6 @@
 #include "blocking_queue.h"
-#include "agricultores.h"
+#include "spawner.h"
+#include "thread.h"
 
 #include <condition_variable>
 #include <mutex>
@@ -8,8 +9,38 @@
 #include <queue>
 #include <chrono>
  
-int main(){
+int main(int argc, const char* argv[]){
 
+    BlockingQueue cola;
+    std::vector<Agricultores*> agricultores;
+    Spawner spawner(argv[1], cola, agricultores);
+    spawner.read_file();
+    std::cout << "size: " << agricultores.size() << '\n';
+
+
+/*
+    std::thread producer([&]() {
+        for (int i = 0; i < 5; ++i) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::cout << "producing " << 'T' << '\n';
+            cola.push('T');
+        }
+        cola.close();
+    });
+
+    for (int i = 0; i < 2; i++){
+        agricultores[i]->start();    
+    }
+
+    producer.join();
+    for (int i = 0; i < 2; i++){
+        agricultores[i]->join();    
+        delete(agricultores[i]);
+    }
+    */
+
+
+/*
     BlockingQueue cola;
 
     std::vector<Agricultores*> agricultores;
@@ -36,6 +67,7 @@ int main(){
         agricultores[i]->join();    
         delete(agricultores[i]);
     }
+*/
 
     return 0;
 }
