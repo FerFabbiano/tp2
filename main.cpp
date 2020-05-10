@@ -1,19 +1,19 @@
-#include "blocking_queue.h"
-#include "spawner.h"
-#include "thread.h"
-
 #include <condition_variable>
 #include <mutex>
 #include <thread>
 #include <iostream>
 #include <queue>
 #include <chrono>
+
+#include "blocking_queue.h"
+#include "spawner.h"
+#include "thread.h"
  
 int main(int argc, const char* argv[]){
 
     BlockingQueue cola_a, cola_m, cola_l;
     std::vector<Thread*> threads;
-    Spawner spawner(argv[1], cola_a, threads);
+    Spawner spawner(argv[1], cola_a, cola_m, cola_l, threads);
     spawner.read_file();
     int cant_threads = threads.size();
 
@@ -21,9 +21,15 @@ int main(int argc, const char* argv[]){
         for (int i = 0; i < 5; ++i) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             std::cout << "producing " << 'T' << '\n';
+            std::cout << "producing " << 'C' << '\n';
+            std::cout << "producing " << 'M' << '\n';
             cola_a.push('T');
+            cola_m.push('C');
+            cola_l.push('M');
         }
         cola_a.close();
+        cola_m.close();
+        cola_l.close();
     });
 
     for (int i = 0; i < cant_threads; i++){
