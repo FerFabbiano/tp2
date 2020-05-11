@@ -19,11 +19,12 @@ int main(int argc, const char* argv[]){
     int cant_threads = threads.size();
 
     Map mapa(argv[2], cola_a, cola_l, cola_m);
-    mapa.repartir_recursos();
 
     for (int i = 0; i < cant_threads; i++){
         threads[i]->start();    
     }
+
+    mapa.repartir_recursos();
 
     for (int i = 0; i < cant_threads; i++){
         threads[i]->join();    

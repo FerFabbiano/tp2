@@ -8,7 +8,7 @@ Spawner::Spawner(const char* filename, BlockingQueue &cola_a,
 Spawner::~Spawner(){}
 
 void Spawner::read_file(){
-    FILE* fp = fopen(this->filename.c_str(), "r+b");
+    FILE* fp = fopen(this->filename.c_str(), "r");
     if (fp == NULL){
         // Lanzar excepción?
     }

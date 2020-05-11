@@ -7,7 +7,7 @@ Map::Map(const char* filename, BlockingQueue &cola_a,
 Map::~Map(){}
 
 void Map::repartir_recursos() {
-    FILE *fp = fopen(this->filename.c_str(), "r+b");
+    FILE *fp = fopen(this->filename.c_str(), "r");
     if (fp == NULL){
         // Lanzar excepción?
     }
@@ -15,14 +15,13 @@ void Map::repartir_recursos() {
         char material;
         material = fgetc(fp);
         if (material == '\n'){
-            material = fgetc(fp);
         }else if(material == 'T'){
             //std::cout << material;
             this->cola_a.push(material);
         }else if (material == 'M'){
             //std::cout << material;
             this->cola_l.push(material);
-        }else{
+        }else if (material == 'C' || material == 'H'){
             //std::cout << material;
             this->cola_m.push(material);
         }
