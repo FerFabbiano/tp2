@@ -18,8 +18,7 @@ void Inventory::add_material(char material){
 }
 
 bool Inventory::consult_stock(const char material, int cantidad){
-    this->it = this->inventory.find(material);
-    if (it->second >= cantidad)
+    if (this->inventory[material] >= cantidad)
         return true;
     return false;
 }
@@ -28,7 +27,7 @@ void Inventory::remove_materials(const char material, const int cantidad){
     this->inventory[material] -= cantidad;
 }
 
-bool Inventory::consult_stock_and_remove_if_there_is(const char material1, 
+bool Inventory::consult_stock_and_get_materials_if_there_is(const char material1, 
     const int cantidad1, const char material2, const int cantidad2){
     std::unique_lock<std::mutex> lk(this->m);
     bool stock1 = consult_stock(material1, cantidad1);

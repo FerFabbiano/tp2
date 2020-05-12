@@ -6,9 +6,10 @@
 #include <queue>
 #include "thread.h"
 #include "blocking_queue.h"
-#include "agricultores.h"
-#include "leniadores.h"
-#include "mineros.h"
+#include "agricultor.h"
+#include "leniador.h"
+#include "minero.h"
+#include "inventory.h"
 
 /* Clase que lee el archivo de entrada, y crea los threads
 según las cantidades indicadas en el archivo */
@@ -16,7 +17,7 @@ class Spawner {
 public:
     Spawner(const char* filename, BlockingQueue &cola_a, 
         BlockingQueue &cola_l, BlockingQueue &cola_m, 
-        std::vector<Thread*> &threads);
+        std::vector<Thread*> &threads, Inventory &inventario);
     /* Lee el archivo de a una línea, y va llamando a la función create 
     cada vez que termina de leer una. */
     void read_file();
@@ -30,6 +31,7 @@ private:
     BlockingQueue &cola_l;
     BlockingQueue &cola_m;
     std::vector<Thread*> &threads;
+    Inventory &inventario;
 };
 
 #endif

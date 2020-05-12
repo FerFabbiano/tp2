@@ -6,9 +6,9 @@
 #include <queue>
 #include "thread.h"
 #include "blocking_queue.h"
-#include "agricultores.h"
-#include "leniadores.h"
-#include "mineros.h"
+#include "agricultor.h"
+#include "leniador.h"
+#include "minero.h"
 
 class Map{
 public:

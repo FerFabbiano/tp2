@@ -16,14 +16,11 @@ public:
 
     void add_material(char material);
     
-    void remove_materials(const char material, const int cantidad);
-    
-    bool consult_stock(const char material, const int cantidad);
-    
-    /* Devuelve falso si no hay stock, devuelvo verdadero y quito los materiales del 
+    /* Devuelve falso si no hay stock y ya no se van a agregar mas materiales a mi
+    inventario. Devuelvo verdadero y quito los materiales del 
     inventario en caso de disponer del stock requerido */
-    bool consult_stock_and_remove_if_there_is(const char material1, const int cantidad1, 
-        const char material2, const int cantidad2);
+    bool consult_stock_and_get_materials_if_there_is(const char material1, 
+        const int cantidad1, const char material2, const int cantidad2);
     
     void close();
 
@@ -31,9 +28,18 @@ public:
     ~Inventory();
 
 private:
+    /* Quito la cantidad indicada del material indicado, de mi inventario */
+    void remove_materials(const char material, const int cantidad);
+
+    /* Devuelvo verdadero en caso de tener ese stock en mi inventario,
+    devuelvo falso en caso de no disponerlo */
+    bool consult_stock(const char material, const int cantidad);
+    
     std::map<char, int> inventory;
+    
     /* Si las colas están cerradas, cierro el inventario */
     bool isClosed;
+    
     std::mutex m;
     std::condition_variable cv;
     std::map<char,int>::iterator it;

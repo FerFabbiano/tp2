@@ -1,9 +1,9 @@
 #include "spawner.h"
 
-Spawner::Spawner(const char* filename, BlockingQueue &cola_a, 
-    BlockingQueue &cola_l, BlockingQueue &cola_m, 
-    std::vector<Thread*> &threads) : filename(filename), cola_a(cola_a), 
-    cola_l(cola_l), cola_m(cola_m), threads(threads) {}
+Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue 
+    &cola_l, BlockingQueue &cola_m, std::vector<Thread*> &threads, Inventory
+    &inventario) : filename(filename), cola_a(cola_a), cola_l(cola_l),
+    cola_m(cola_m), threads(threads), inventario(inventario) {}
 
 Spawner::~Spawner(){}
 
@@ -34,15 +34,15 @@ void Spawner::create(char *trabajador, char *cantidad){
     int cant = strtol(cantidad, NULL, 10);
     if (strcmp(trabajador, "Agricultores") == 0){
         for (int i = 0; i < cant; i++){
-            this->threads.push_back(new Agricultores(cola_a));
+            this->threads.push_back(new Agricultor(cola_a, inventario));
         }
     }else if(strcmp(trabajador, "Mineros") == 0){
         for (int i = 0; i < cant; i++){
-            this->threads.push_back(new Mineros(cola_m));
+            this->threads.push_back(new Minero(cola_m, inventario));
         }
     }else if(strcmp(trabajador, "Leniadores") == 0){
         for (int i = 0; i < cant; i++){
-            this->threads.push_back(new Leniadores(cola_l));
+            this->threads.push_back(new Leniador(cola_l, inventario));
         }
     }else if(strcmp(trabajador, "Cocineros") == 0){
         //std::cout << trabajador << std::endl;

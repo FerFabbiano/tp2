@@ -19,13 +19,13 @@ char BlockingQueue::pop(){
     std::unique_lock<std::mutex> lk(this->m);
     while(queue.empty()){
         if(isClosed){
-            std::cout << "No hay mas elementos por consumir." << '\n';
+            //std::cout << "No hay mas elementos por consumir." << '\n';
             return '1';
         }
         cv.wait(lk); // función bloqueante, evito Busy Wait
     }
     int out = queue.front(); // devuelve una referencia al próximo elemento
-    std::cout << queue.front() << '\n';
+    //std::cout << queue.front() << '\n';
     queue.pop(); // quito el próximo elemento de la cola
     return out;
 }

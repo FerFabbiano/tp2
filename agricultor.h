@@ -3,15 +3,17 @@
 
 #include "thread.h"
 #include "blocking_queue.h"
+#include "inventory.h"
 #include <iostream>
 
-class Agricultores : public Thread {
+class Agricultor : public Thread {
 public:
-    Agricultores(BlockingQueue &queue_agricultores);
-    ~Agricultores();
+    Agricultor(BlockingQueue &queue_agricultores, Inventory &inventario);
+    ~Agricultor();
     void run();
 private:
     BlockingQueue &queue_agricultores;
+    Inventory &inventario;
 };
 
 

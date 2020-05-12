@@ -14,6 +14,7 @@
  
 int main(int argc, const char* argv[]){
 
+/*
     Inventory inventario;
     inventario.add_material('T');
     inventario.add_material('T');
@@ -25,11 +26,11 @@ int main(int argc, const char* argv[]){
 
     inventario.close();
 
-    bool m = inventario.consult_stock_and_remove_if_there_is('T', 2, 'C', 1);
-    m = inventario.consult_stock_and_remove_if_there_is('T', 2, 'C', 1);
+    bool m = inventario.consult_stock_and_get_materials_if_there_is('T', 2, 'C', 1);
+    m = inventario.consult_stock_and_get_materials_if_there_is('T', 2, 'C', 1);
 
     std::cout << m << std::endl;
-
+*/
     /*
     bool stock1 = inventario.consult_stock('T', 2);
     bool stock2 = inventario.consult_stock('C', 1);
@@ -45,30 +46,10 @@ int main(int argc, const char* argv[]){
     std::cout << stock4 << std::endl;
     */
 
-
-
-/*
-    std::map<char,int> mymap;
-
-    // first insert function version (single parameter):
-    mymap.insert ( std::pair<char,int>('T',2) );
-    mymap.insert ( std::pair<char,int>('M',0) );
-    mymap.insert ( std::pair<char,int>('H',0) );
-    mymap.insert ( std::pair<char,int>('C', 0) );
-
-    std::map<char,int>::iterator it = mymap.begin();
-    mymap.at('T') ++;
-
-    it = mymap.find('T');
-
-    std::cout << it->second << std::endl;
-*/
-
-/*
-
+    Inventory inventario;
     BlockingQueue cola_a, cola_m, cola_l;
     std::vector<Thread*> threads;
-    Spawner spawner(argv[1], cola_a, cola_m, cola_l, threads);
+    Spawner spawner(argv[1], cola_a, cola_m, cola_l, threads, inventario);
     spawner.read_file();
     int cant_threads = threads.size();
   
@@ -79,18 +60,16 @@ int main(int argc, const char* argv[]){
     }
 
     mapa.repartir_recursos();
-    int a = cola_a.tamanio(cola_a);
-    int m = cola_m.tamanio(cola_m);
-    int l = cola_l.tamanio(cola_l);
-
-    std::cout << cant_threads << '\n' << a << '\n' << l << '\n' << m << '\n';
+    inventario.close();
 
     for (int i = 0; i < cant_threads; i++){
         threads[i]->join();    
         delete(threads[i]);
     }
 
-*/
+    bool m = inventario.consult_stock_and_get_materials_if_there_is('T', 5, 'M', 7);
+
+    std::cout << m << std::endl;
 
     return 0;
 }
