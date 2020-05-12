@@ -4,6 +4,7 @@
 #include <iostream>
 #include <queue>
 #include <chrono>
+#include <map>
 
 #include "blocking_queue.h"
 #include "spawner.h"
@@ -12,6 +13,26 @@
  
 int main(int argc, const char* argv[]){
 
+/*
+    std::map<char,int> mymap;
+
+    // first insert function version (single parameter):
+    mymap.insert ( std::pair<char,int>('a',100) );
+    mymap.insert ( std::pair<char,int>('z',200) );
+    mymap.insert ( std::pair<char,int>('d',200) );
+    mymap.insert ( std::pair<char,int>('f',200) );
+
+    std::map<char,int>::iterator it = mymap.begin();
+  
+    it ++++;
+    it->second = 600;
+
+    // showing contents:
+    std::cout << "mymap contains:\n";
+    for (it=mymap.begin(); it!=mymap.end(); ++it)
+        std::cout << it->first << " => " << it->second << '\n';
+*/
+    
     BlockingQueue cola_a, cola_m, cola_l;
     std::vector<Thread*> threads;
     Spawner spawner(argv[1], cola_a, cola_m, cola_l, threads);
@@ -25,40 +46,16 @@ int main(int argc, const char* argv[]){
     }
 
     mapa.repartir_recursos();
+    int a = cola_a.tamanio(cola_a);
+    int m = cola_m.tamanio(cola_m);
+    int l = cola_l.tamanio(cola_l);
+
+    std::cout << cant_threads << '\n' << a << '\n' << l << '\n' << m << '\n';
 
     for (int i = 0; i < cant_threads; i++){
         threads[i]->join();    
         delete(threads[i]);
     }
-
-/*
-    BlockingQueue cola;
-
-    std::vector<Agricultores*> agricultores;
-
-    std::thread producer([&]() {
-        for (int i = 0; i < 5; ++i) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            std::cout << "producing " << 'T' << '\n';
-            cola.push('T');
-        }
-        cola.close();
-    });
-
-    for (int i = 0; i < 3; i++){
-        agricultores.push_back(new Agricultores(cola));
-    }
-
-    for (int i = 0; i < 3; i++){
-        agricultores[i]->start();    
-    }
-
-    producer.join();
-    for (int i = 0; i < 3; i++){
-        agricultores[i]->join();    
-        delete(agricultores[i]);
-    }
-*/
 
     return 0;
 }
