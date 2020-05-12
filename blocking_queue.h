@@ -18,7 +18,7 @@ public:
     void push(char material);
     char pop();
     void close();
-    int tamanio(BlockingQueue &cola);
+    int tamanio(BlockingQueue &cola) const;
     ~BlockingQueue();
 };
 

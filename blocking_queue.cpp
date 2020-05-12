@@ -40,7 +40,7 @@ void BlockingQueue::close(){
     cv.notify_all();
 }
 
-int BlockingQueue::tamanio(BlockingQueue &cola){
+int BlockingQueue::tamanio(BlockingQueue &cola) const{
     int tamanio = queue.size();
     return tamanio;
 }
