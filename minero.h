@@ -1,7 +1,6 @@
 #ifndef MINERO_H
 #define MINERO_H
 
-#include "thread.h"
 #include "blocking_queue.h"
 #include <iostream>
 #include "inventory.h"

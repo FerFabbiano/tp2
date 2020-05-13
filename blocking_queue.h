@@ -4,8 +4,6 @@
 #include <condition_variable>
 #include <queue>
 #include <mutex>
-#include <cstring>
-#include <iostream>
 
 class BlockingQueue {
 private:

@@ -25,7 +25,7 @@ public:
     
     void close();
 
-    int get_stock(const char material);
+    void print_stock_restante();
 
     void set_cant_recolectores(int cantidad);
 
@@ -40,11 +40,10 @@ private:
     devuelvo falso en caso de no disponerlo */
     bool consult_stock(const char material, const int cantidad);
     
-    std::map<char, int> inventory;
+    std::map<char, int> inventario;
     
     /* Si las colas están cerradas, cierro el inventario */
     int isClosed;
-    
     std::mutex m;
     std::condition_variable cv;
     int cant_recolectores;

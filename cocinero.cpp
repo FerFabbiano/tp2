@@ -19,7 +19,7 @@ void Cocinero::run(){
         //std::cout << "Convirtiendo puntos de cocinero " << convertir_a_puntos << std::endl;
         if (convertir_a_puntos == true){
             usleep(60);
-            puntos.inc(3);
+            puntos.inc(5);
         }
     }
 }

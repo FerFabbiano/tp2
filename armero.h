@@ -1,7 +1,6 @@
 #ifndef ARMERO_H
 #define ARMERO_H
 
-#include "thread.h"
 #include "inventory.h"
 #include "resultProtected.h"
 #include <unistd.h>

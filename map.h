@@ -1,15 +1,10 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <iostream>
-#include <cstring>
 #include <queue>
-#include "thread.h"
+#include <iostream>
+
 #include "blocking_queue.h"
-#include "agricultor.h"
-#include "leniador.h"
-#include "minero.h"
-#include "inventory.h"
 
 class Map{
 public:

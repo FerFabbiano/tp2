@@ -1,10 +1,10 @@
 #include "inventory.h"
 
 Inventory::Inventory(){
-    this->inventory.insert ( std::pair<char,int>('T',0) );
-    this->inventory.insert ( std::pair<char,int>('M',0) );
-    this->inventory.insert ( std::pair<char,int>('H',0) );
-    this->inventory.insert ( std::pair<char,int>('C', 0) );
+    this->inventario.insert ( std::pair<char,int>('T',0) );
+    this->inventario.insert ( std::pair<char,int>('M',0) );
+    this->inventario.insert ( std::pair<char,int>('H',0) );
+    this->inventario.insert ( std::pair<char,int>('C', 0) );
     this->isClosed = false;
 }
 
@@ -12,18 +12,18 @@ Inventory::~Inventory(){}
 
 void Inventory::add_material(char material){
     std::unique_lock<std::mutex> lk(this->m);
-    this->inventory.at(material) ++;
+    this->inventario.at(material) ++;
     cv.notify_all();
 }
 
 bool Inventory::consult_stock(const char material, int cantidad){
-    if (this->inventory[material] >= cantidad)
+    if (this->inventario[material] >= cantidad)
         return true;
     return false;
 }
 
 void Inventory::remove_materials(const char material, const int cantidad){
-    this->inventory[material] -= cantidad;
+    this->inventario[material] -= cantidad;
 }
 
 bool Inventory::consult_stock_and_get_materials_if_there_is(const char material1, 
@@ -50,8 +50,13 @@ void Inventory::close(){
     cv.notify_all();
 }
 
-int Inventory::get_stock(const char material){
-    return this->inventory[material];
+void Inventory::print_stock_restante(){
+    std::cout << "Recursos restantes: \n";
+    std::cout << "  - Trigo: " << this->inventario['T'] << '\n';
+    std::cout << "  - Madera: " << this->inventario['M'] << '\n';
+    std::cout << "  - Carbon: " << this->inventario['C'] << '\n';
+    std::cout << "  - Hierro: " << this->inventario['H'] << '\n';
+    std::cout << '\n';
 }
 
 void Inventory::set_cant_recolectores(int cantidad){
