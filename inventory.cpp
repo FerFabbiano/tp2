@@ -2,7 +2,7 @@
 #include <utility>
 #include <map>
 
-Inventory::Inventory(std::map<char, int> &inventario) : inventario(inventario){
+Inventory::Inventory(){
     this->inventario.insert(std::pair<char,int>('T',0));
     this->inventario.insert(std::pair<char,int>('M',0));
     this->inventario.insert(std::pair<char,int>('H',0));
@@ -19,7 +19,7 @@ void Inventory::add_material(char material){
 }
 
 bool Inventory::consult_stock(const char material, int cantidad) const{
-    if (this->inventario[material] >= cantidad)
+    if (this->inventario.at(material) >= cantidad)
         return true;
     return false;
 }
@@ -54,10 +54,10 @@ void Inventory::close(){
 
 void Inventory::print_stock_restante() const{
     std::cout << "Recursos restantes:\n";
-    std::cout << "  - Trigo: " << this->inventario['T'] << '\n';
-    std::cout << "  - Madera: " << this->inventario['M'] << '\n';
-    std::cout << "  - Carbon: " << this->inventario['C'] << '\n';
-    std::cout << "  - Hierro: " << this->inventario['H'] << '\n';
+    std::cout << "  - Trigo: " << this->inventario.at('T') << '\n';
+    std::cout << "  - Madera: " << this->inventario.at('M') << '\n';
+    std::cout << "  - Carbon: " << this->inventario.at('C') << '\n';
+    std::cout << "  - Hierro: " << this->inventario.at('H') << '\n';
     std::cout << '\n';
 }
 

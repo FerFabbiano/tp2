@@ -25,18 +25,19 @@ public:
         BlockingQueue &cola_l, BlockingQueue &cola_m, 
         std::vector<Thread*> &threads, Inventory &inventario, 
         ResultProtected &puntos);
+    /* Función que obtiene la cantidad de recolectores que habrá */
+    int get_cant_recolectores();
     /* Lee el archivo de a una línea, y va llamando a la función create 
     cada vez que termina de leer una. */
     void read_file();
-    /* Recibe por parámetro el tipo de trabajador, y la cantidad que tiene 
-    que crear, para luego agregar al vector de threads. */
-    void create(char *trabajador, char *cantidad);
-    /* Función que obtiene la cantidad de recolectores que habrá */
-    int get_cant_recolectores();
+    int cantidad_recolectores;
     /* Destructor */
     ~Spawner();
     
 private:
+    /* Recibe por parámetro el tipo de trabajador, y la cantidad que tiene 
+    que crear, para luego agregar al vector de threads. */
+    void create(char *trabajador, char *cantidad);
     std::string filename;
     BlockingQueue &cola_a;
     BlockingQueue &cola_l;
@@ -44,7 +45,6 @@ private:
     std::vector<Thread*> &threads;
     Inventory &inventario;
     ResultProtected &puntos;
-    int cantidad_recolectores;
 };
 
 #endif

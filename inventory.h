@@ -13,7 +13,7 @@
 class Inventory{
 public:
     /* Inicializo el mapa con sus keys en 0 */
-    Inventory(std::map<char, int> &inventario); 
+    Inventory(); 
 
     void add_material(char material);
     
@@ -40,7 +40,7 @@ private:
     devuelvo falso en caso de no disponerlo */
     bool consult_stock(const char material, const int cantidad) const;
     
-    std::map<char, int> &inventario;
+    std::map<char, int> inventario;
     
     /* Si las colas están cerradas, cierro el inventario */
     int isClosed;
@@ -48,11 +48,5 @@ private:
     std::condition_variable cv;
     int cant_recolectores;
 };
-
-
-
-
-
-
 
 #endif
