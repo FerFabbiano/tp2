@@ -11,5 +11,4 @@ void ResultProtected::print_points() const{
     std::cout << "Puntos de Beneficio acumulados: " << result << '\n';
 }
 
-
 ResultProtected::~ResultProtected(){}
