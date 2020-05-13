@@ -16,6 +16,7 @@ public:
     void push(char material);
     char pop();
     void close();
+    /* Obtengo el tamanio de la cola. Método usado para ejecutar pruebas */
     int tamanio(BlockingQueue &cola) const;
     ~BlockingQueue();
 };

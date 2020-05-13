@@ -10,3 +10,6 @@ void ResultProtected::inc(unsigned int s) {
 void ResultProtected::print_points() const{
     std::cout << "Puntos de beneficio acumulados: " << result << '\n';
 }
+
+
+ResultProtected::~ResultProtected(){}

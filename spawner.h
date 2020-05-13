@@ -20,6 +20,7 @@
 según las cantidades indicadas en el archivo */
 class Spawner {
 public:
+    /* Constructor */
     Spawner(const char* filename, BlockingQueue &cola_a, 
         BlockingQueue &cola_l, BlockingQueue &cola_m, 
         std::vector<Thread*> &threads, Inventory &inventario, 
@@ -30,7 +31,9 @@ public:
     /* Recibe por parámetro el tipo de trabajador, y la cantidad que tiene 
     que crear, para luego agregar al vector de threads. */
     void create(char *trabajador, char *cantidad);
+    /* Función que obtiene la cantidad de recolectores que habrá */
     int get_cant_recolectores();
+    /* Destructor */
     ~Spawner();
 private:
     std::string filename;
