@@ -35,6 +35,7 @@ public:
     int get_cant_recolectores();
     /* Destructor */
     ~Spawner();
+    
 private:
     std::string filename;
     BlockingQueue &cola_a;

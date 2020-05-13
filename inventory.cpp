@@ -52,7 +52,7 @@ void Inventory::close(){
 }
 
 void Inventory::print_stock_restante(){
-    std::cout << "Recursos restantes: \n";
+    std::cout << "Recursos restantes:\n";
     std::cout << "  - Trigo: " << this->inventario['T'] << '\n';
     std::cout << "  - Madera: " << this->inventario['M'] << '\n';
     std::cout << "  - Carbon: " << this->inventario['C'] << '\n';
