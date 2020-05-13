@@ -4,6 +4,7 @@
 #include "map.h"
 #include "inventory.h"
 #include <vector>
+#include <map>
  
 int main(int argc, const char* argv[]){
     std::map<char, int> invent;

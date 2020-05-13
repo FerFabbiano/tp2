@@ -1,5 +1,6 @@
 #include "inventory.h"
 #include <utility>
+#include <map>
 
 Inventory::Inventory(std::map<char, int> &inventario) : inventario(inventario){
     this->inventario.insert(std::pair<char,int>('T',0));
