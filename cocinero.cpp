@@ -16,7 +16,6 @@ void Cocinero::run(){
         convertir_a_puntos = 
         inventario.consult_stock_and_get_materials_if_there_is(material1,
         cantidad1, material2, cantidad2);
-        //std::cout << "Convirtiendo puntos de cocinero " << convertir_a_puntos << std::endl;
         if (convertir_a_puntos == true){
             usleep(60);
             puntos.inc(5);

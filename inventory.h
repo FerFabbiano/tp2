@@ -13,7 +13,7 @@
 class Inventory{
 public:
     /* Inicializo el mapa con sus keys en 0 */
-    Inventory (); 
+    Inventory(); 
 
     void add_material(char material);
     

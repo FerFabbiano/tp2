@@ -11,7 +11,7 @@ private:
     std::mutex m;        
     unsigned int result; 
 public:
-    ResultProtected(unsigned int v);
+    explicit ResultProtected(unsigned int v);
     void inc(unsigned int s);
     void print_points() const;
 };

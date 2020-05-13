@@ -17,8 +17,8 @@ en la cola.
 */
 char BlockingQueue::pop(){
     std::unique_lock<std::mutex> lk(this->m);
-    while(queue.empty()){
-        if(isClosed){
+    while (queue.empty()){
+        if (isClosed){
             //std::cout << "No hay mas elementos por consumir." << '\n';
             return '1';
         }

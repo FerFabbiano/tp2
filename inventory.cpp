@@ -1,10 +1,11 @@
 #include "inventory.h"
+#include <utility>
 
 Inventory::Inventory(){
-    this->inventario.insert ( std::pair<char,int>('T',0) );
-    this->inventario.insert ( std::pair<char,int>('M',0) );
-    this->inventario.insert ( std::pair<char,int>('H',0) );
-    this->inventario.insert ( std::pair<char,int>('C', 0) );
+    this->inventario.insert(std::pair<char,int>('T',0));
+    this->inventario.insert(std::pair<char,int>('M',0));
+    this->inventario.insert(std::pair<char,int>('H',0));
+    this->inventario.insert(std::pair<char,int>('C', 0));
     this->isClosed = false;
 }
 
@@ -26,8 +27,8 @@ void Inventory::remove_materials(const char material, const int cantidad){
     this->inventario[material] -= cantidad;
 }
 
-bool Inventory::consult_stock_and_get_materials_if_there_is(const char material1, 
-    const int cantidad1, const char material2, const int cantidad2){
+bool Inventory::consult_stock_and_get_materials_if_there_is(const char 
+    material1, const int cantidad1, const char material2, const int cantidad2){
     std::unique_lock<std::mutex> lk(this->m);
     bool stock1 = consult_stock(material1, cantidad1);
     bool stock2 = consult_stock(material2, cantidad2);

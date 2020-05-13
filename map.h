@@ -3,6 +3,7 @@
 
 #include <queue>
 #include <iostream>
+#include <string>
 
 #include "blocking_queue.h"
 

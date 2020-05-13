@@ -1,4 +1,5 @@
 #include "spawner.h"
+#include <vector>
 
 Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue 
     &cola_l, BlockingQueue &cola_m, std::vector<Thread*> &threads, Inventory
@@ -18,7 +19,7 @@ void Spawner::read_file(){
     char trabajador[14], cantidad;
     memset(trabajador, 0, sizeof(trabajador));
     int n = 0;
-    while(!feof(fp)){
+    while (!feof(fp)){
         while (strchr(trabajador, '=') == NULL){
             n += fread(&trabajador[n], 1, 1, fp);
         }
@@ -40,23 +41,23 @@ void Spawner::create(char *trabajador, char *cantidad){
             cantidad_recolectores ++;
             this->threads.push_back(new Agricultor(cola_a, inventario));
         }
-    }else if(strcmp(trabajador, "Mineros") == 0){
+    }else if (strcmp(trabajador, "Mineros") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
             this->threads.push_back(new Minero(cola_m, inventario));
         }
-    }else if(strcmp(trabajador, "Leniadores") == 0){
+    }else if (strcmp(trabajador, "Leniadores") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
             this->threads.push_back(new Leniador(cola_l, inventario));
         }
-    }else if(strcmp(trabajador, "Cocineros") == 0){
+    }else if (strcmp(trabajador, "Cocineros") == 0){
         for (int i = 0; i < cant; i++)
             this->threads.push_back(new Cocinero(inventario, puntos));
-    }else if(strcmp(trabajador, "Carpinteros") == 0){
+    }else if (strcmp(trabajador, "Carpinteros") == 0){
         for (int i = 0; i < cant; i++)
             this->threads.push_back(new Carpintero(inventario, puntos));
-    }else if(strcmp(trabajador, "Armeros") == 0){
+    }else if (strcmp(trabajador, "Armeros") == 0){
         for (int i = 0; i < cant; i++)
             this->threads.push_back(new Armero(inventario, puntos));
     }

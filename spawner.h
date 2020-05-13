@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstring>
 #include <queue>
+#include <string>
+#include <vector>
 #include "thread.h"
 #include "blocking_queue.h"
 #include "agricultor.h"

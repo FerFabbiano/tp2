@@ -15,7 +15,7 @@ void Map::repartir_recursos() {
         char material;
         material = fgetc(fp);
         if (material == '\n'){
-        }else if(material == 'T'){
+        }else if (material == 'T'){
             //std::cout << material;
             this->cola_a.push(material);
         }else if (material == 'M'){
