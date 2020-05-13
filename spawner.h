@@ -25,8 +25,6 @@ public:
         BlockingQueue &cola_l, BlockingQueue &cola_m, 
         std::vector<Thread*> &threads, Inventory &inventario, 
         ResultProtected &puntos);
-    /* Función que obtiene la cantidad de recolectores que habrá */
-    int get_cant_recolectores();
     /* Lee el archivo de a una línea, y va llamando a la función create 
     cada vez que termina de leer una. */
     void read_file();

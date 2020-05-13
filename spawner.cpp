@@ -62,7 +62,3 @@ void Spawner::create(char *trabajador, char *cantidad){
             this->threads.push_back(new Armero(inventario, puntos));
     }
 }
-
-int Spawner::get_cant_recolectores(){
-    return this->cantidad_recolectores;
-}
