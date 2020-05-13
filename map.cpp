@@ -26,6 +26,7 @@ void Map::repartir_recursos() {
             this->cola_m.push(material);
         }
     }
+    fclose(fp);
     this->cola_a.close();
     this->cola_l.close();
     this->cola_m.close();

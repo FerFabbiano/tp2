@@ -6,7 +6,8 @@
 #include <vector>
  
 int main(int argc, const char* argv[]){
-    Inventory inventario;
+    std::map<char, int> invent;
+    Inventory inventario(invent);
     ResultProtected puntos(0);
     BlockingQueue cola_a, cola_m, cola_l;
     std::vector<Thread*> threads;

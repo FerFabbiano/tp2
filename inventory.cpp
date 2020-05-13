@@ -1,7 +1,7 @@
 #include "inventory.h"
 #include <utility>
 
-Inventory::Inventory(){
+Inventory::Inventory(std::map<char, int> &inventario) : inventario(inventario){
     this->inventario.insert(std::pair<char,int>('T',0));
     this->inventario.insert(std::pair<char,int>('M',0));
     this->inventario.insert(std::pair<char,int>('H',0));
@@ -17,7 +17,7 @@ void Inventory::add_material(char material){
     cv.notify_all();
 }
 
-bool Inventory::consult_stock(const char material, int cantidad){
+bool Inventory::consult_stock(const char material, int cantidad) const{
     if (this->inventario[material] >= cantidad)
         return true;
     return false;
@@ -51,7 +51,7 @@ void Inventory::close(){
     cv.notify_all();
 }
 
-void Inventory::print_stock_restante(){
+void Inventory::print_stock_restante() const{
     std::cout << "Recursos restantes:\n";
     std::cout << "  - Trigo: " << this->inventario['T'] << '\n';
     std::cout << "  - Madera: " << this->inventario['M'] << '\n';

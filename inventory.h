@@ -13,7 +13,7 @@
 class Inventory{
 public:
     /* Inicializo el mapa con sus keys en 0 */
-    Inventory(); 
+    Inventory(std::map<char, int> &inventario); 
 
     void add_material(char material);
     
@@ -25,7 +25,7 @@ public:
     
     void close();
 
-    void print_stock_restante();
+    void print_stock_restante() const;
 
     void set_cant_recolectores(int cantidad);
 
@@ -38,9 +38,9 @@ private:
 
     /* Devuelvo verdadero en caso de tener ese stock en mi inventario,
     devuelvo falso en caso de no disponerlo */
-    bool consult_stock(const char material, const int cantidad);
+    bool consult_stock(const char material, const int cantidad) const;
     
-    std::map<char, int> inventario;
+    std::map<char, int> &inventario;
     
     /* Si las colas están cerradas, cierro el inventario */
     int isClosed;
