@@ -10,7 +10,7 @@ void Leniador::run(){
     while (material != '1'){
         material = queue_leniadores.pop();
         if (material != '1'){
-            usleep(60);
+            usleep(50);
             inventario.add_material(material);
         }
         if (material == '1'){
