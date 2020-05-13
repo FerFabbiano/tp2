@@ -7,6 +7,7 @@
 #include <iostream>
 #include <map>
 
+#include "thread.h"
 #include "lock.h"
 
 class Inventory{
@@ -24,6 +25,10 @@ public:
     
     void close();
 
+    int get_stock(const char material);
+
+    void set_cant_recolectores(int cantidad);
+
     /* Destructor */
     ~Inventory();
 
@@ -38,11 +43,11 @@ private:
     std::map<char, int> inventory;
     
     /* Si las colas están cerradas, cierro el inventario */
-    bool isClosed;
+    int isClosed;
     
     std::mutex m;
     std::condition_variable cv;
-    std::map<char,int>::iterator it;
+    int cant_recolectores;
 };
 
 

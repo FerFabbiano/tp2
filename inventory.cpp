@@ -1,11 +1,10 @@
 #include "inventory.h"
 
-Inventory::Inventory (){
+Inventory::Inventory(){
     this->inventory.insert ( std::pair<char,int>('T',0) );
     this->inventory.insert ( std::pair<char,int>('M',0) );
     this->inventory.insert ( std::pair<char,int>('H',0) );
     this->inventory.insert ( std::pair<char,int>('C', 0) );
-    this->it = this->inventory.begin();
     this->isClosed = false;
 }
 
@@ -33,10 +32,12 @@ bool Inventory::consult_stock_and_get_materials_if_there_is(const char material1
     bool stock1 = consult_stock(material1, cantidad1);
     bool stock2 = consult_stock(material2, cantidad2);
     while (!stock1 || !stock2){
-        if (isClosed){
+        if (isClosed == cant_recolectores){
             return false;
         }
         this->cv.wait(lk);
+        stock1 = consult_stock(material1, cantidad1);
+        stock2 = consult_stock(material2, cantidad2);
     }
     remove_materials(material1, cantidad1);
     remove_materials(material2, cantidad2);
@@ -45,6 +46,14 @@ bool Inventory::consult_stock_and_get_materials_if_there_is(const char material1
 
 void Inventory::close(){
     std::unique_lock<std::mutex> lk(this->m);
-    isClosed = true;
+    isClosed += 1;
     cv.notify_all();
+}
+
+int Inventory::get_stock(const char material){
+    return this->inventory[material];
+}
+
+void Inventory::set_cant_recolectores(int cantidad){
+    this->cant_recolectores = cantidad;
 }

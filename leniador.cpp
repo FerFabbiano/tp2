@@ -9,7 +9,12 @@ void Leniador::run(){
     char material = ' ';
     while (material != '1'){
         material = queue_leniadores.pop();
-        if (material != '1')
+        if (material != '1'){
+            usleep(60);
             inventario.add_material(material);
+        }
+        if (material == '1'){
+            inventario.close();
+        }
     }
 }

@@ -1,4 +1,4 @@
-#include "carpinteros.h"
+#include "carpintero.h"
 
 Carpintero::Carpintero(Inventory &inventario, ResultProtected &puntos) 
     : inventario(inventario), puntos(puntos){
@@ -11,12 +11,14 @@ Carpintero::Carpintero(Inventory &inventario, ResultProtected &puntos)
 Carpintero::~Carpintero(){}
 
 void Carpintero::run(){
-    bool convertir_a_puntos = NULL;
+    bool convertir_a_puntos = true;
     while (convertir_a_puntos != false){
         convertir_a_puntos = 
         inventario.consult_stock_and_get_materials_if_there_is(material1,
         cantidad1, material2, cantidad2);
+        //std::cout << "Convirtiendo puntos de Carpintero " << convertir_a_puntos << std::endl;
         if (convertir_a_puntos == true){
+            usleep(60);
             puntos.inc(2);
         }
     }

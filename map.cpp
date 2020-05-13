@@ -1,8 +1,8 @@
 #include "map.h"
 
-Map::Map(const char* filename, BlockingQueue &cola_a, 
-    BlockingQueue &cola_l, BlockingQueue &cola_m) : filename(filename), 
-    cola_a(cola_a), cola_l(cola_l), cola_m(cola_m){}
+Map::Map(const char* filename, BlockingQueue &cola_a, BlockingQueue &cola_l,
+    BlockingQueue &cola_m) : filename(filename), cola_a(cola_a), 
+    cola_l(cola_l), cola_m(cola_m){}
 
 Map::~Map(){}
 

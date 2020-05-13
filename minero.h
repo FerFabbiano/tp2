@@ -5,6 +5,7 @@
 #include "blocking_queue.h"
 #include <iostream>
 #include "inventory.h"
+#include <unistd.h>
 
 class Minero : public Thread {
 public:

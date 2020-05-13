@@ -1,9 +1,10 @@
-#ifndef CARPINTEROS_H
-#define CARPINTEROS_H
+#ifndef CARPINTERO_H
+#define CARPINTERO_H
 
 #include "thread.h"
 #include "inventory.h"
 #include "resultProtected.h"
+#include <unistd.h>
 
 class Carpintero : public Thread {
 public:

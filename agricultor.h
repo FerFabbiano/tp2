@@ -5,6 +5,7 @@
 #include "blocking_queue.h"
 #include "inventory.h"
 #include <iostream>
+#include <unistd.h>
 
 class Agricultor : public Thread {
 public:

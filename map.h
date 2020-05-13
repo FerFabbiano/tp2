@@ -9,6 +9,7 @@
 #include "agricultor.h"
 #include "leniador.h"
 #include "minero.h"
+#include "inventory.h"
 
 class Map{
 public:
