@@ -6,18 +6,6 @@
 #include <vector>
 #include <map>
 
-/* 
-int main(int argc, const char* argv[]){
-    Inventory inventario;
-    ResultProtected puntos(0);
-    BlockingQueue cola_a, cola_m, cola_l;
-    std::vector<Thread*> threads;
-    Spawner spawner(argv[1],cola_a,cola_m,cola_l,threads,inventario,puntos);
-    spawner.read_file();
-    return 0;
-}
-*/
-
 int main(int argc, const char* argv[]){
     Inventory inventario;
     ResultProtected puntos(0);
