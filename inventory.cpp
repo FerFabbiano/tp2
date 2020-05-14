@@ -19,9 +19,7 @@ void Inventory::add_material(const char material){
 }
 
 bool Inventory::consult_stock(const char material, const int cantidad) const{
-    if (this->inventario.at(material) >= cantidad)
-        return true;
-    return false;
+    return (this->inventario.at(material) >= cantidad);
 }
 
 void Inventory::remove_materials(const char material, const int cantidad){

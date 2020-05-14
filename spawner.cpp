@@ -18,9 +18,7 @@ int Spawner::read_file(){
     fs.open(this->filename);
     if (!fs.is_open())
         return ERROR;
-    std::string linea;
-    std::string trabajador;
-    std::string cantidad;
+    std::string linea, trabajador, cantidad;
     while (!fs.eof()){
         while (getline(fs, linea)){
             trabajador = linea.substr(0, linea.find("=", 0));
