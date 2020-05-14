@@ -17,7 +17,7 @@ void Cocinero::run(){
         inventario.consult_stock_and_get_materials_if_there_is(material1,
         cantidad1, material2, cantidad2);
         if (convertir_a_puntos == true){
-            usleep(60);
+            usleep(60000);
             puntos.inc(5);
         }
     }

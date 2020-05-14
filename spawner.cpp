@@ -1,6 +1,7 @@
 #include "spawner.h"
 #include <vector>
 #include <fstream>
+#include <string>
 
 Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue 
     &cola_l, BlockingQueue &cola_m, std::vector<Thread*> &threads, Inventory
@@ -8,57 +9,53 @@ Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue
     cola_l(cola_l), cola_m(cola_m), threads(threads), inventario(inventario),
     puntos(puntos) {
         this->cantidad_recolectores = 0;
-    }
+}
 
 Spawner::~Spawner(){}
 
-void Spawner::read_file(){
+int Spawner::read_file(){
     std::ifstream fs;
     fs.open(this->filename);
-    char trabajador[14], cantidad;
-    memset(trabajador, 0, sizeof(trabajador));
-    int n = 0;
+    if (!fs.is_open())
+        return ERROR;
+    std::string linea;
+    std::string trabajador;
+    std::string cantidad;
     while (!fs.eof()){
-        while (strchr(trabajador, '=') == NULL){
-            fs.read(&trabajador[n], 1);
-            n++;
+        while (getline(fs, linea)){
+            trabajador = linea.substr(0, linea.find("=", 0));
+            cantidad = linea.substr(linea.find("=")+1, 1);
+            create(trabajador, cantidad);
         }
-        trabajador[n-1] = '\0';
-        fs.read(&cantidad, 1);
-        create(trabajador, &cantidad);
-        memset(trabajador, 0, sizeof(trabajador));
-        fs.read(&cantidad, 1); // avanzo uno el tintero del archivo
-        n = 0;
-        fs.read(&trabajador[n], 1);
-        n++;
     }
     fs.close();
+    return 0;
 }
 
-void Spawner::create(const char *trabajador, const char *cantidad){
-    int cant = strtol(cantidad, NULL, 10);
-    if (strcmp(trabajador, "Agricultores") == 0){
+void Spawner::create(std::string trabajador, std::string cantidad){
+    int cant = stoi(cantidad);
+    if (trabajador.compare("Agricultores") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
             this->threads.push_back(new Agricultor(cola_a, inventario));
         }
-    }else if (strcmp(trabajador, "Mineros") == 0){
+    }else if (trabajador.compare("Mineros") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
             this->threads.push_back(new Minero(cola_m, inventario));
         }
-    }else if (strcmp(trabajador, "Leniadores") == 0){
+    }else if (trabajador.compare("Leniadores") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
             this->threads.push_back(new Leniador(cola_l, inventario));
         }
-    }else if (strcmp(trabajador, "Cocineros") == 0){
+    }else if (trabajador.compare("Cocineros") == 0){
         for (int i = 0; i < cant; i++)
             this->threads.push_back(new Cocinero(inventario, puntos));
-    }else if (strcmp(trabajador, "Carpinteros") == 0){
+    }else if (trabajador.compare("Carpinteros") == 0){
         for (int i = 0; i < cant; i++)
             this->threads.push_back(new Carpintero(inventario, puntos));
-    }else if (strcmp(trabajador, "Armeros") == 0){
+    }else if (trabajador.compare("Armeros") == 0){
         for (int i = 0; i < cant; i++)
             this->threads.push_back(new Armero(inventario, puntos));
     }
