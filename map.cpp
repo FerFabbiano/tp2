@@ -7,21 +7,20 @@ Map::Map(const char* filename, BlockingQueue &cola_a, BlockingQueue &cola_l,
 
 Map::~Map(){}
 
-void Map::repartir_recursos() {
+int Map::repartir_recursos() {
     std::ifstream fs;
     fs.open(this->filename);
+    if (!fs.is_open())
+        return ERROR;
     while (!fs.eof()){
         char material;
         material = fs.get();
         if (material == '\n'){
         }else if (material == 'T'){
-            //std::cout << material;
             this->cola_a.push(material);
         }else if (material == 'M'){
-            //std::cout << material;
             this->cola_l.push(material);
         }else if (material == 'C' || material == 'H'){
-            //std::cout << material;
             this->cola_m.push(material);
         }
     }
@@ -29,4 +28,5 @@ void Map::repartir_recursos() {
     this->cola_a.close();
     this->cola_l.close();
     this->cola_m.close();
+    return 0;
 }
