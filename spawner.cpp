@@ -1,5 +1,6 @@
 #include "spawner.h"
 #include <vector>
+#include <fstream>
 
 Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue 
     &cola_l, BlockingQueue &cola_m, std::vector<Thread*> &threads, Inventory
@@ -12,26 +13,26 @@ Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue
 Spawner::~Spawner(){}
 
 void Spawner::read_file(){
-    FILE* fp = fopen(this->filename.c_str(), "r");
-    if (fp == NULL){
-        // Lanzar excepción?
-    }
+    std::ifstream fs;
+    fs.open(this->filename);
     char trabajador[14], cantidad;
     memset(trabajador, 0, sizeof(trabajador));
     int n = 0;
-    while (!feof(fp)){
+    while (!fs.eof()){
         while (strchr(trabajador, '=') == NULL){
-            n += fread(&trabajador[n], 1, 1, fp);
+            fs.read(&trabajador[n], 1);
+            n++;
         }
         trabajador[n-1] = '\0';
-        n += fread(&cantidad, 1, 1, fp);
+        fs.read(&cantidad, 1);
         create(trabajador, &cantidad);
         memset(trabajador, 0, sizeof(trabajador));
-        n += fread(&cantidad, 1, 1, fp); // avanzo uno el tintero del archivo
+        fs.read(&cantidad, 1); // avanzo uno el tintero del archivo
         n = 0;
-        n += fread(&trabajador[n], 1, 1, fp);
+        fs.read(&trabajador[n], 1);
+        n++;
     }
-    fclose(fp);
+    fs.close();
 }
 
 void Spawner::create(char *trabajador, char *cantidad){

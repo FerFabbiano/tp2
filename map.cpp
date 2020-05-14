@@ -1,4 +1,5 @@
 #include "map.h"
+#include <fstream>
 
 Map::Map(const char* filename, BlockingQueue &cola_a, BlockingQueue &cola_l,
     BlockingQueue &cola_m) : filename(filename), cola_a(cola_a), 
@@ -7,13 +8,11 @@ Map::Map(const char* filename, BlockingQueue &cola_a, BlockingQueue &cola_l,
 Map::~Map(){}
 
 void Map::repartir_recursos() {
-    FILE *fp = fopen(this->filename.c_str(), "r");
-    if (fp == NULL){
-        // Lanzar excepción?
-    }
-    while (!feof(fp)){
+    std::ifstream fs;
+    fs.open(this->filename);
+    while (!fs.eof()){
         char material;
-        material = fgetc(fp);
+        material = fs.get();
         if (material == '\n'){
         }else if (material == 'T'){
             //std::cout << material;
@@ -26,7 +25,7 @@ void Map::repartir_recursos() {
             this->cola_m.push(material);
         }
     }
-    fclose(fp);
+    fs.close();
     this->cola_a.close();
     this->cola_l.close();
     this->cola_m.close();
