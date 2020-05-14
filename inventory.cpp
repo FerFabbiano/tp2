@@ -12,13 +12,13 @@ Inventory::Inventory(){
 
 Inventory::~Inventory(){}
 
-void Inventory::add_material(char material){
+void Inventory::add_material(const char material){
     std::unique_lock<std::mutex> lk(this->m);
     this->inventario.at(material) ++;
     cv.notify_all();
 }
 
-bool Inventory::consult_stock(const char material, int cantidad) const{
+bool Inventory::consult_stock(const char material, const int cantidad) const{
     if (this->inventario.at(material) >= cantidad)
         return true;
     return false;

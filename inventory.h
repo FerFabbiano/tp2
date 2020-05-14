@@ -14,7 +14,7 @@ class Inventory{
 public:
     /* Inicializo el mapa con sus keys en 0 */
     Inventory(); 
-    void add_material(char material);
+    void add_material(const char material);
     /* Devuelve falso si no hay stock y ya no se van a agregar mas materiales a mi
     inventario. Devuelvo verdadero y quito los materiales del 
     inventario en caso de disponer del stock requerido */
@@ -22,7 +22,7 @@ public:
         const int cantidad1, const char material2, const int cantidad2);
     void close();
     void print_stock_restante() const;
-    void set_cant_recolectores(int cantidad);
+    void set_cant_recolectores(const int cantidad);
     /* Destructor */
     ~Inventory();
 

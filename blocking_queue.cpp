@@ -2,7 +2,7 @@
 
 BlockingQueue::BlockingQueue() : isClosed(false){}
 
-void BlockingQueue::push(char material){
+void BlockingQueue::push(const char material){
     std::unique_lock<std::mutex> lk(this->m);
     queue.push(material);
     cv.notify_all();

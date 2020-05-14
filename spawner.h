@@ -35,7 +35,7 @@ public:
 private:
     /* Recibe por parámetro el tipo de trabajador, y la cantidad que tiene 
     que crear, para luego agregar al vector de threads. */
-    void create(char *trabajador, char *cantidad);
+    void create(const char *trabajador, const char *cantidad);
     std::string filename;
     BlockingQueue &cola_a;
     BlockingQueue &cola_l;

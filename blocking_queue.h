@@ -13,7 +13,7 @@ private:
     std::condition_variable cv;
 public: 
     BlockingQueue();
-    void push(char material);
+    void push(const char material);
     char pop();
     void close();
     /* Obtengo el tamanio de la cola. Método usado para ejecutar pruebas */

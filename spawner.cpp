@@ -35,7 +35,7 @@ void Spawner::read_file(){
     fs.close();
 }
 
-void Spawner::create(char *trabajador, char *cantidad){
+void Spawner::create(const char *trabajador, const char *cantidad){
     int cant = strtol(cantidad, NULL, 10);
     if (strcmp(trabajador, "Agricultores") == 0){
         for (int i = 0; i < cant; i++){
