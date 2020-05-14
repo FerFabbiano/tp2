@@ -1,14 +1,14 @@
 #include "resultProtected.h"
 
-ResultProtected::ResultProtected(unsigned int v) : result(v) {}
+ResultProtected::ResultProtected() : points(0) {}
     
 void ResultProtected::inc(unsigned int s) {
     Lock l(m);
-    result += s;
+    points += s;
 }
 
 void ResultProtected::print_points() const{
-    std::cout << "Puntos de Beneficio acumulados: " << result << '\n';
+    std::cout << "Puntos de Beneficio acumulados: " << points << '\n';
 }
 
 ResultProtected::~ResultProtected(){}

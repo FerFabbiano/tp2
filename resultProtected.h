@@ -9,10 +9,10 @@
 class ResultProtected {
 private:
     std::mutex m;        
-    unsigned int result; 
+    unsigned int points; 
 public:
     /* Constructor */
-    explicit ResultProtected(unsigned int v);
+    explicit ResultProtected();
     /* Incremento el valor del atributo resultado */
     void inc(unsigned int s);
     /* Imprimo el valor del atributo resultado por pantalla */
