@@ -1,7 +1,6 @@
 #ifndef COCINERO_H
 #define COCINERO_H
 
-#include "thread.h"
 #include "inventory.h"
 #include "resultProtected.h"
 #include <unistd.h>

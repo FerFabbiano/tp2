@@ -2,7 +2,6 @@
 #define MINERO_H
 
 #include "blocking_queue.h"
-#include <iostream>
 #include "inventory.h"
 #include <unistd.h>
 
@@ -15,6 +14,5 @@ private:
     BlockingQueue &queue_mineros;
     Inventory &inventario;
 };
-
 
 #endif
