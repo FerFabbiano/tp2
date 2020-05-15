@@ -10,7 +10,7 @@ void Minero::run(){
     while (material != '1'){
         material = queue_mineros.pop();
         if (material != '1'){
-            usleep(50000);
+            usleep(50);
             inventario.add_material(material);
         }
         if (material == '1'){

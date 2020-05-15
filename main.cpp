@@ -27,4 +27,3 @@ int main(int argc, const char* argv[]){
     points.print_points();
     return 0;
 }
-
