@@ -28,5 +28,5 @@
 	Del mismo modo funciona el Recurso Compartido resultProtected, el que posee una función que va incrementando un contador de puntos cada vez que es invocado por algún productor. Esto debe suceder también con el mutex de dicho recurso tomado, para evitar que dos productores quieran sumar a la vez, y que el resultado final de puntos se vea afectado por alguna race condition que haya provocado un resultado erróneo. 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/38590805/82076622-83ef5000-96b4-11ea-8939-a6c5d10534b5.png" 			width=900 height=600>
+<img src="https://user-images.githubusercontent.com/38590805/82076622-83ef5000-96b4-11ea-8939-a6c5d10534b5.png" 			width=900 height=300>
 
