@@ -12,7 +12,7 @@ private:
     unsigned int points; 
 public:
     /* Constructor */
-    explicit ResultProtected();
+    ResultProtected();
     /* Incremento el valor del atributo resultado */
     void inc(unsigned int s);
     /* Imprimo el valor del atributo resultado por pantalla */
