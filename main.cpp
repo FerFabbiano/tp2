@@ -11,7 +11,7 @@ int main(int argc, const char* argv[]){
     ResultProtected points;
     BlockingQueue cola_a, cola_m, cola_l;
     std::vector<Thread*> threads;
-    Spawner spawner(argv[1],cola_a,cola_m,cola_l,threads,inventario,points);
+    Spawner spawner(argv[1],cola_a,cola_l,cola_m,threads,inventario,points);
     spawner.read_file();
     inventario.set_cant_recolectores(spawner.cantidad_recolectores);
     Map mapa(argv[2], cola_a, cola_l, cola_m);

@@ -1,4 +1,3 @@
-
 # Taller de Programación - TP2
 
 **Alumno**: Fernando Fabbiano
