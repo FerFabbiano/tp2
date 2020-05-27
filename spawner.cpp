@@ -5,8 +5,8 @@
 
 Spawner::Spawner(const char* filename, BlockingQueue &cola_a, BlockingQueue 
     &cola_l, BlockingQueue &cola_m, std::vector<Thread*> &threads, Inventory
-    &inventario, ResultProtected &puntos) : filename(filename), cola_a(cola_a),
-    cola_l(cola_l), cola_m(cola_m), threads(threads), inventario(inventario),
+    &inventory, ResultProtected &puntos) : filename(filename), cola_a(cola_a),
+    cola_l(cola_l), cola_m(cola_m), threads(threads), inventory(inventory),
     puntos(puntos) {
         this->cantidad_recolectores = 0;
 }
@@ -35,26 +35,26 @@ void Spawner::create(std::string trabajador, std::string cantidad){
     if (trabajador.compare("Agricultores") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
-            this->threads.push_back(new Agricultor(cola_a, inventario));
+            this->threads.push_back(new Agricultor(cola_a, inventory));
         }
     }else if (trabajador.compare("Mineros") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
-            this->threads.push_back(new Minero(cola_m, inventario));
+            this->threads.push_back(new Minero(cola_m, inventory));
         }
     }else if (trabajador.compare("Leniadores") == 0){
         for (int i = 0; i < cant; i++){
             cantidad_recolectores ++;
-            this->threads.push_back(new Leniador(cola_l, inventario));
+            this->threads.push_back(new Leniador(cola_l, inventory));
         }
     }else if (trabajador.compare("Cocineros") == 0){
         for (int i = 0; i < cant; i++)
-            this->threads.push_back(new Cocinero(inventario, puntos));
+            this->threads.push_back(new Cocinero(inventory, puntos));
     }else if (trabajador.compare("Carpinteros") == 0){
         for (int i = 0; i < cant; i++)
-            this->threads.push_back(new Carpintero(inventario, puntos));
+            this->threads.push_back(new Carpintero(inventory, puntos));
     }else if (trabajador.compare("Armeros") == 0){
         for (int i = 0; i < cant; i++)
-            this->threads.push_back(new Armero(inventario, puntos));
+            this->threads.push_back(new Armero(inventory, puntos));
     }
 }

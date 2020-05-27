@@ -8,12 +8,12 @@
 
 class Leniador : public Thread {
 public:
-    Leniador(BlockingQueue &queue_leniadores, Inventory &inventario);
+    Leniador(BlockingQueue &queue_leniadores, Inventory &inventory);
     ~Leniador();
     void run();
 private:
     BlockingQueue &queue_leniadores;
-    Inventory &inventario;
+    Inventory &inventory;
 };
 
 

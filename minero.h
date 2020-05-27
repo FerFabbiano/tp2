@@ -7,12 +7,12 @@
 
 class Minero : public Thread {
 public:
-    Minero(BlockingQueue &queue_agricultores, Inventory &inventario);
+    Minero(BlockingQueue &queue_agricultores, Inventory &inventory);
     ~Minero();
     void run();
 private:
     BlockingQueue &queue_mineros;
-    Inventory &inventario;
+    Inventory &inventory;
 };
 
 #endif

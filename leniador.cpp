@@ -1,7 +1,7 @@
 #include "leniador.h"
 
-Leniador::Leniador(BlockingQueue &queue_leniadores, Inventory &inventario) : 
-queue_leniadores(queue_leniadores), inventario(inventario) {}
+Leniador::Leniador(BlockingQueue &queue_leniadores, Inventory &inventory) : 
+queue_leniadores(queue_leniadores), inventory(inventory) {}
 
 Leniador::~Leniador(){}
 
@@ -11,10 +11,10 @@ void Leniador::run(){
         material = queue_leniadores.pop();
         if (material != '1'){
             usleep(50000);
-            inventario.add_material(material);
+            inventory.add_material(material);
         }
         if (material == '1'){
-            inventario.close();
+            inventory.close();
         }
     }
 }

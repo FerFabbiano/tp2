@@ -7,12 +7,12 @@
 
 class Agricultor : public Thread {
 public:
-    Agricultor(BlockingQueue &queue_agricultores, Inventory &inventario);
+    Agricultor(BlockingQueue &queue_agricultores, Inventory &inventory);
     ~Agricultor();
     void run();
 private:
     BlockingQueue &queue_agricultores;
-    Inventory &inventario;
+    Inventory &inventory;
 };
 
 

@@ -1,7 +1,7 @@
 #include "agricultor.h"
 
 Agricultor::Agricultor(BlockingQueue &queue_agricultores, Inventory 
-&inventario) : queue_agricultores(queue_agricultores), inventario(inventario){}
+&inventory) : queue_agricultores(queue_agricultores), inventory(inventory){}
 
 Agricultor::~Agricultor(){}
 
@@ -11,10 +11,10 @@ void Agricultor::run(){
         material = queue_agricultores.pop();
         if (material != '1'){
             usleep(50000);
-            inventario.add_material(material);
+            inventory.add_material(material);
         }
         if (material == '1'){ 
-            inventario.close();
+            inventory.close();
         }
     }
 }

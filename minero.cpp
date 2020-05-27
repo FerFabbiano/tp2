@@ -1,7 +1,7 @@
 #include "minero.h"
 
-Minero::Minero(BlockingQueue &queue_mineros, Inventory &inventario) 
-: queue_mineros(queue_mineros), inventario(inventario) {}
+Minero::Minero(BlockingQueue &queue_mineros, Inventory &inventory) 
+: queue_mineros(queue_mineros), inventory(inventory) {}
 
 Minero::~Minero(){}
 
@@ -11,10 +11,10 @@ void Minero::run(){
         material = queue_mineros.pop();
         if (material != '1'){
             usleep(50000);
-            inventario.add_material(material);
+            inventory.add_material(material);
         }
         if (material == '1'){
-            inventario.close();
+            inventory.close();
         }
     }
 }

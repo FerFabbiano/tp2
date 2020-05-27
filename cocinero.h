@@ -7,11 +7,11 @@
 
 class Cocinero : public Thread {
 public:
-    Cocinero(Inventory &inventario, ResultProtected &puntos);
+    Cocinero(Inventory &inventory, ResultProtected &puntos);
     ~Cocinero();
     void run();
 private:
-    Inventory &inventario;
+    Inventory &inventory;
     ResultProtected &puntos;
     char material1;
     char material2;

@@ -7,11 +7,11 @@
 
 class Armero : public Thread {
 public:
-    Armero(Inventory &inventario, ResultProtected &puntos);
+    Armero(Inventory &inventory, ResultProtected &puntos);
     ~Armero();
     void run();
 private:
-    Inventory &inventario;
+    Inventory &inventory;
     ResultProtected &puntos;
     char material1;
     char material2;

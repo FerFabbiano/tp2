@@ -24,7 +24,7 @@ public:
     /* Constructor */
     Spawner(const char* filename, BlockingQueue &cola_a, 
         BlockingQueue &cola_l, BlockingQueue &cola_m, 
-        std::vector<Thread*> &threads, Inventory &inventario, 
+        std::vector<Thread*> &threads, Inventory &inventory, 
         ResultProtected &puntos);
     /* Lee el archivo de a una línea, y va llamando a la función create 
     cada vez que termina de leer una. */
@@ -43,7 +43,7 @@ private:
     BlockingQueue &cola_l;
     BlockingQueue &cola_m;
     std::vector<Thread*> &threads;
-    Inventory &inventario;
+    Inventory &inventory;
     ResultProtected &puntos;
 };
 

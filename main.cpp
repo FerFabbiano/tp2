@@ -7,13 +7,13 @@
 #include <map>
 
 int main(int argc, const char* argv[]){
-    Inventory inventario;
+    Inventory inventory;
     ResultProtected points;
     BlockingQueue cola_a, cola_m, cola_l;
     std::vector<Thread*> threads;
-    Spawner spawner(argv[1],cola_a,cola_l,cola_m,threads,inventario,points);
+    Spawner spawner(argv[1],cola_a,cola_l,cola_m,threads,inventory,points);
     spawner.read_file();
-    inventario.set_cant_recolectores(spawner.cantidad_recolectores);
+    inventory.set_cant_recolectores(spawner.cantidad_recolectores);
     Map mapa(argv[2], cola_a, cola_l, cola_m);
     for (int i = 0; i < (int)threads.size(); i++){
         threads[i]->start();    
@@ -23,7 +23,7 @@ int main(int argc, const char* argv[]){
         threads[i]->join();    
         delete(threads[i]);
     }
-    inventario.print_stock_restante();
+    inventory.print_stock_restante();
     points.print_points();
     return 0;
 }
