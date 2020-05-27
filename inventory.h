@@ -10,6 +10,8 @@
 #include "thread.h"
 #include "lock.h"
 
+#define NO_MORE_MATERIALS '1'
+
 class Inventory{
 public:
     /* Inicializo el mapa con sus keys en 0 */

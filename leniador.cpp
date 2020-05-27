@@ -7,13 +7,13 @@ Leniador::~Leniador(){}
 
 void Leniador::run(){
     char material = ' ';
-    while (material != '1'){
+    while (material != NO_MORE_MATERIALS){
         material = queue_leniadores.pop();
-        if (material != '1'){
+        if (material != NO_MORE_MATERIALS){
             usleep(50000);
             inventory.add_material(material);
         }
-        if (material == '1'){
+        if (material == NO_MORE_MATERIALS){
             inventory.close();
         }
     }
