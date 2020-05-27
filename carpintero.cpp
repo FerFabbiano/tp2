@@ -16,7 +16,7 @@ void Carpintero::run(){
         convertir_a_puntos = 
         inventory.consult_stock_and_get_materials_if_there_is(material1,
         cantidad1, material2, cantidad2);
-        if (convertir_a_puntos == true){
+        if (convertir_a_puntos){
             usleep(60000);
             puntos.inc(2);
         }
