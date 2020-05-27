@@ -4,6 +4,7 @@
 #include "inventory.h"
 #include "resultProtected.h"
 #include <unistd.h>
+#include <map>
 
 class Carpintero : public Thread {
 public:
@@ -13,10 +14,7 @@ public:
 private:
     Inventory &inventory;
     ResultProtected &puntos;
-    char material1;
-    char material2;
-    int cantidad1;
-    int cantidad2;
+    std::map<char, int> materials;
 };
 
 #endif

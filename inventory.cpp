@@ -26,21 +26,31 @@ void Inventory::remove_materials(const char material, const int cantidad){
     this->inventory[material] -= cantidad;
 }
 
-bool Inventory::consult_stock_and_get_materials_if_there_is(const char 
-    material1, const int cantidad1, const char material2, const int cantidad2){
+bool Inventory::consult_stock_and_get_materials_if_there_is(
+    std::map<char, int> &materials){
     std::unique_lock<std::mutex> lk(this->m);
-    bool stock1 = consult_stock(material1, cantidad1);
-    bool stock2 = consult_stock(material2, cantidad2);
-    while (!stock1 || !stock2){
+    bool stock = false;
+    for (auto& x: materials){
+        stock = consult_stock(x.first, x.second);
+        if (!stock)
+            break;
+    }
+    //bool stock1 = consult_stock(materials.at(), cantidad1);
+    //bool stock2 = consult_stock(material2, cantidad2);
+    while (!stock){
         if (isClosed == cant_recolectores){
             return false;
         }
         this->cv.wait(lk);
-        stock1 = consult_stock(material1, cantidad1);
-        stock2 = consult_stock(material2, cantidad2);
+        for (auto& x: materials){
+            stock = consult_stock(x.first, x.second);
+            if (!stock)
+                break;
+        }
     }
-    remove_materials(material1, cantidad1);
-    remove_materials(material2, cantidad2);
+    for (auto& x: materials){
+        remove_materials(x.first, x.second);
+    }
     return true;
 }
 

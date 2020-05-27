@@ -19,8 +19,7 @@ public:
     /* Devuelve falso si no hay stock y ya no se van a agregar mas materiales a mi
     inventory. Devuelvo verdadero y quito los materiales del 
     inventory en caso de disponer del stock requerido */
-    bool consult_stock_and_get_materials_if_there_is(const char material1, 
-        const int cantidad1, const char material2, const int cantidad2);
+    bool consult_stock_and_get_materials_if_there_is(std::map<char, int> &materials);
     void close();
     void print_stock_restante() const;
     void set_cant_recolectores(const int cantidad);
