@@ -35,8 +35,6 @@ bool Inventory::consult_stock_and_get_materials_if_there_is(
         if (!stock)
             break;
     }
-    //bool stock1 = consult_stock(materials.at(), cantidad1);
-    //bool stock2 = consult_stock(material2, cantidad2);
     while (!stock){
         if (isClosed == cant_recolectores){
             return false;
