@@ -8,7 +8,6 @@
 #include <map>
 
 #include "thread.h"
-#include "lock.h"
 
 #define NO_MORE_MATERIALS '1'
 

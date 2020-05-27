@@ -4,7 +4,6 @@
 #include <vector>
 #include <thread>
 #include <mutex>
-#include "lock.h"
 
 class ResultProtected {
 private:

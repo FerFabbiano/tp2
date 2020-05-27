@@ -1,9 +1,10 @@
 #include "resultProtected.h"
+#include <iostream>
 
 ResultProtected::ResultProtected() : points(0) {}
     
 void ResultProtected::inc(unsigned int s) {
-    Lock l(m);
+    std::unique_lock<std::mutex> lk(this->m);
     points += s;
 }
 
