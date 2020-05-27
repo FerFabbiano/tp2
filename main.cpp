@@ -18,10 +18,16 @@ int main(int argc, const char* argv[]){
     for (int i = 0; i < (int)threads.size(); i++){
         threads[i]->start();    
     }
-    mapa.repartir_recursos();
+    if (mapa.repartir_recursos() == 1){
+        for (int i = 0; i < (int)threads.size(); i++){
+            threads[i]->join();    
+            delete(threads[i]);
+        }
+        return 1;
+    }
     for (int i = 0; i < (int)threads.size(); i++){
-        threads[i]->join();    
-        delete(threads[i]);
+            threads[i]->join();    
+            delete(threads[i]);
     }
     inventory.print_stock_restante();
     points.print_points();

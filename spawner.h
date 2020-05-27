@@ -15,7 +15,7 @@
 #include "cocinero.h"
 #include "armero.h"
 #include "inventory.h"
-#define ERROR 1;
+#define ERROR 1
 
 /* Clase que lee el archivo de entrada, y crea los threads
 según las cantidades indicadas en el archivo */

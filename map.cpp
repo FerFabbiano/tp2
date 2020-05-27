@@ -12,9 +12,9 @@ int Map::repartir_recursos() {
     fs.open(this->filename);
     if (!fs.is_open())
         return ERROR;
+    char material;
+    material = fs.get();
     while (!fs.eof()){
-        char material;
-        material = fs.get();
         if (material == '\n'){
         }else if (material == 'T'){
             this->cola_a.push(material);
@@ -22,7 +22,10 @@ int Map::repartir_recursos() {
             this->cola_l.push(material);
         }else if (material == 'C' || material == 'H'){
             this->cola_m.push(material);
+        }else{ 
+            return ERROR;    
         }
+        material = fs.get();
     }
     fs.close();
     this->cola_a.close();

@@ -6,7 +6,7 @@
 #include <string>
 #include "blocking_queue.h"
 
-#define ERROR 1;
+#define ERROR 1
 
 /* Clase que parsea el mapa de recursos */
 class Map{
