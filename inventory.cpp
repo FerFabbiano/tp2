@@ -7,7 +7,7 @@ Inventory::Inventory(){
     this->inventory.insert(std::pair<char,int>('M',0));
     this->inventory.insert(std::pair<char,int>('H',0));
     this->inventory.insert(std::pair<char,int>('C', 0));
-    this->isClosed = false;
+    this->isClosed = 0;
 }
 
 Inventory::~Inventory(){}
