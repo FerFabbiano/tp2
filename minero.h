@@ -4,15 +4,12 @@
 #include "blocking_queue.h"
 #include "inventory.h"
 #include <unistd.h>
+#include "recolectores.h"
 
-class Minero : public Thread {
+class Minero : public Recolectores {
 public:
     Minero(BlockingQueue &queue_agricultores, Inventory &inventory);
     ~Minero();
-    void run();
-private:
-    BlockingQueue &queue_mineros;
-    Inventory &inventory;
 };
 
 #endif

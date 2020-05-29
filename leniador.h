@@ -5,15 +5,15 @@
 #include "inventory.h"
 #include <iostream>
 #include <unistd.h>
+#include "recolectores.h"
 
-class Leniador : public Thread {
+class Leniador : public Recolectores {
 public:
     Leniador(BlockingQueue &queue_leniadores, Inventory &inventory);
     ~Leniador();
-    void run();
+    //void run();
 private:
-    BlockingQueue &queue_leniadores;
-    Inventory &inventory;
+
 };
 
 

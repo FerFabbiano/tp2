@@ -4,15 +4,13 @@
 #include "blocking_queue.h"
 #include "inventory.h"
 #include <unistd.h>
+#include "recolectores.h"
 
-class Agricultor : public Thread {
+class Agricultor : public Recolectores {
 public:
     Agricultor(BlockingQueue &queue_agricultores, Inventory &inventory);
     ~Agricultor();
-    void run();
-private:
-    BlockingQueue &queue_agricultores;
-    Inventory &inventory;
+    
 };
 
 
