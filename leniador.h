@@ -11,10 +11,6 @@ class Leniador : public Recolectores {
 public:
     Leniador(BlockingQueue &queue_leniadores, Inventory &inventory);
     ~Leniador();
-    //void run();
-private:
-
 };
-
 
 #endif

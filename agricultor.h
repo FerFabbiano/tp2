@@ -9,8 +9,7 @@
 class Agricultor : public Recolectores {
 public:
     Agricultor(BlockingQueue &queue_agricultores, Inventory &inventory);
-    ~Agricultor();
-    
+    ~Agricultor(); 
 };
 
 

@@ -1,4 +1,5 @@
 #include "cocinero.h"
+#include <utility>
 
 Cocinero::Cocinero(Inventory &inventory, ResultProtected &puntos) 
     : inventory(inventory), puntos(puntos){
