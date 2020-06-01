@@ -6,8 +6,8 @@
 class Productores : public Thread{
 public: 
     Productores();
-    virtual ~Productores() = 0;
-    void run();
+    virtual ~Productores();
+    virtual void run();
 };
 
 #endif

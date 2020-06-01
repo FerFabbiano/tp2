@@ -8,8 +8,8 @@
 class Recolectores : public Thread{
 public:
     Recolectores(BlockingQueue &queue, Inventory &inventory);
-    virtual ~Recolectores() = 0;
-    void run();
+    virtual ~Recolectores();
+    virtual void run();
 private:
     BlockingQueue &queue;
     Inventory &inventory;
