@@ -1,4 +1,5 @@
 #include "armero.h"
+#include <utility>
 
 Armero::Armero(Inventory &inventory, ResultProtected &points) 
     : Productores(inventory, points){
