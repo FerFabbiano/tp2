@@ -1,20 +1,12 @@
 #ifndef ARMERO_H
 #define ARMERO_H
 
-#include "inventory.h"
-#include "resultProtected.h"
-#include <unistd.h>
-#include <map>
+#include "productores.h"
 
-class Armero : public Thread {
+class Armero : public Productores {
 public:
     Armero(Inventory &inventory, ResultProtected &puntos);
     ~Armero();
-    void run();
-private:
-    Inventory &inventory;
-    ResultProtected &puntos;
-    std::map<char, int> materials;
 };
 
 #endif
