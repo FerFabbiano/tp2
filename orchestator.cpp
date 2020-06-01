@@ -1,8 +1,8 @@
 #include "orchestator.h"
 
 Orchestator::Orchestator(const char* workers, const char* map_of_materials) : 
-spawner(workers, cola_a, cola_l, cola_m, threads, inventory, points), 
-map(map_of_materials, cola_a, cola_l, cola_m){}
+spawner(workers, queue_a, queue_l, queue_m, threads, inventory, points), 
+map(map_of_materials, queue_a, queue_l, queue_m){}
 
 void Orchestator::init(){
     spawner.read_file();

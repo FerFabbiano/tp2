@@ -19,7 +19,7 @@ public:
 private:
     Inventory inventory;
     ResultProtected points;
-    BlockingQueue cola_a, cola_m, cola_l;
+    BlockingQueue queue_a, queue_m, queue_l;
     std::vector<Thread*> threads;
     Spawner spawner;
     Map map;

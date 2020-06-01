@@ -22,8 +22,8 @@ según las cantidades indicadas en el archivo */
 class Spawner {
 public:
     /* Constructor */
-    Spawner(const char* filename, BlockingQueue &cola_a, 
-        BlockingQueue &cola_l, BlockingQueue &cola_m, 
+    Spawner(const char* filename, BlockingQueue &queue_a, 
+        BlockingQueue &queue_l, BlockingQueue &queue_m, 
         std::vector<Thread*> &threads, Inventory &inventory, 
         ResultProtected &puntos);
     /* Lee el archivo de a una línea, y va llamando a la función create 
@@ -39,9 +39,9 @@ private:
     //void create(const char *trabajador, const char *cantidad);
     void create(std::string trabajador, std::string cantidad);
     std::string filename;
-    BlockingQueue &cola_a;
-    BlockingQueue &cola_l;
-    BlockingQueue &cola_m;
+    BlockingQueue &queue_a;
+    BlockingQueue &queue_l;
+    BlockingQueue &queue_m;
     std::vector<Thread*> &threads;
     Inventory &inventory;
     ResultProtected &puntos;

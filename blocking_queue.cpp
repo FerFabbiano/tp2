@@ -10,10 +10,10 @@ void BlockingQueue::push(const char material){
 
 /*
 Pueden suceder dos casos.
-1- la cola esta vacía, pero no cerrada. En cuyo caso debo esperar hasta que 
-se le agregue un elemento a la cola. 
-2- la cola esta vacía y cerrada, es decir, no se van a recibir mas elementos 
-en la cola. 
+1- la queue esta vacía, pero no cerrada. En cuyo caso debo esperar hasta que 
+se le agregue un elemento a la queue. 
+2- la queue esta vacía y cerrada, es decir, no se van a recibir mas elementos 
+en la queue. 
 */
 char BlockingQueue::pop(){
     std::unique_lock<std::mutex> lk(this->m);
@@ -24,7 +24,7 @@ char BlockingQueue::pop(){
         cv.wait(lk); // función bloqueante, evito Busy Wait
     }
     int out = queue.front(); // devuelve una referencia al próximo elemento
-    queue.pop(); // quito el próximo elemento de la cola
+    queue.pop(); // quito el próximo elemento de la queue
     return out;
 }
 

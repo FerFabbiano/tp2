@@ -1,9 +1,9 @@
 #include "map.h"
 #include <fstream>
 
-Map::Map(const char* filename, BlockingQueue &cola_a, BlockingQueue &cola_l,
-    BlockingQueue &cola_m) : filename(filename), cola_a(cola_a), 
-    cola_l(cola_l), cola_m(cola_m){}
+Map::Map(const char* filename, BlockingQueue &queue_a, BlockingQueue &queue_l,
+    BlockingQueue &queue_m) : filename(filename), queue_a(queue_a), 
+    queue_l(queue_l), queue_m(queue_m){}
 
 Map::~Map(){}
 
@@ -17,19 +17,19 @@ int Map::repartir_recursos() {
     while (!fs.eof()){
         if (material == '\n'){
         }else if (material == 'T'){
-            this->cola_a.push(material);
+            this->queue_a.push(material);
         }else if (material == 'M'){
-            this->cola_l.push(material);
+            this->queue_l.push(material);
         }else if (material == 'C' || material == 'H'){
-            this->cola_m.push(material);
+            this->queue_m.push(material);
         }else{ 
             return ERROR;    
         }
         material = fs.get();
     }
     fs.close();
-    this->cola_a.close();
-    this->cola_l.close();
-    this->cola_m.close();
+    this->queue_a.close();
+    this->queue_l.close();
+    this->queue_m.close();
     return 0;
 }

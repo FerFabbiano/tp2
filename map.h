@@ -12,18 +12,18 @@
 class Map{
 public:
     /* Constructor */
-    Map(const char* filename, BlockingQueue &cola_a, 
-        BlockingQueue &cola_l, BlockingQueue &cola_m);
-    /* Distribuye los recursos a sus recpectivas colas */
+    Map(const char* filename, BlockingQueue &queue_a, 
+        BlockingQueue &queue_l, BlockingQueue &queue_m);
+    /* Distribuye los recursos a sus recpectivas queues */
     int repartir_recursos();
     /* Destructor */
     ~Map();
 
 private:
     std::string filename;
-    BlockingQueue &cola_a;
-    BlockingQueue &cola_l;
-    BlockingQueue &cola_m;
+    BlockingQueue &queue_a;
+    BlockingQueue &queue_l;
+    BlockingQueue &queue_m;
 };
 
 #endif
